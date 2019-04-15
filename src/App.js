@@ -5,11 +5,12 @@ import MainContainer from './containers/MainContainer'
 class App extends Component {
 
     state = {
-        stocks: [],
-        portfolio:[]
+        stocks: []
     }
 
-    componentDidMount(){
+
+
+    componentDidMount() {
         fetch('http://localhost:3000/stocks')
         .then(res => res.json())
         .then(data => {
@@ -19,18 +20,13 @@ class App extends Component {
         })
     }
 
-    handleAdd = (id) => {
-        const foundStock = this.state.stocks.find(stock => stock.id === id)
-        this.setState({
-            portfolio: foundStock
-        },() => console.log(this.state.portfolio))
-    }
+
 
   render() {
     return (
       <div>
         <Header/>
-        <MainContainer stocks={this.state.stocks} portfolio={this.state.portfolio} handleAdd={this.handleAdd}/>
+        <MainContainer stocks={this.state.stocks} />
       </div>
     );
   }
